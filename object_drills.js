@@ -73,7 +73,7 @@ function decode(string) {
     c: 3,
     d: 4,
   }
-  
+
   for(let i = 0; i < wordArray.length; i++){
     if(cipher.hasOwnProperty(wordArray[i][0])){
       arr.push(wordArray[i][cipher[wordArray[i][0]]])
@@ -94,9 +94,9 @@ console.log(decode('craft block argon meter bells brown croon droop'));
 
 // class Character {
 //   constructor (name, nickName, race, origin, attack, defense) {
-//     this.name = name, 
+//     this.name = name,
 //     this.nickName = nickName,
-//     this.race = race, 
+//     this.race = race,
 //     this.origin = origin,
 //     this.attack = attack,
 //     this.defense = defense;
@@ -175,3 +175,19 @@ const HEROES = [
   { id: 6, name: 'Aquaman', squad: 'Justice League' },
   { id: 7, name: 'Hulk', squad: 'Avengers' },
 ];
+
+function findOne(arr, query) {
+
+  function findMatch(query) {
+    for(let j in query) {
+      for(let i = 0; i < arr.length; i++){
+        return (arr[i][j] === query[j]);
+        // if (arr[i].hasOwnProperty(j) && arr[i][j] === query[j]) {
+        //   return true;
+        // }
+      }
+    }
+  }
+  console.log(arr.find(findMatch));
+}
+findOne(HEROES, { id: 5, squad: 'Justice League' });
