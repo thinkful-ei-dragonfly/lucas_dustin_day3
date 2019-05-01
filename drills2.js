@@ -3,7 +3,7 @@
 function makeStudentsReport(data) {
   //loop through data
   let studentGrades = [];
-  let i = 0; 
+  let i = 0;
   while (i < data.length) {
     studentGrades.push(`${data[i].name}: ${data[i].grade}`);
     i++;
@@ -12,27 +12,27 @@ function makeStudentsReport(data) {
   return studentGrades;
   //each index item is an object (data[i].name data[i].grade)
 }
-  
-/* From here down, you are not expected to 
-     understand.... for now :)  
-     
+
+/* From here down, you are not expected to
+     understand.... for now :)
+
      Nothing to see here!
-     
+
   */
-  
+
 // tests
-  
+
 function testIt() {
   const testData = [
     { name: 'Jane Doe', grade: 'A' },
     { name: 'John Dough', grade: 'B' },
     { name: 'Jill Do', grade: 'A' },
   ];
-  
+
   const expectations = ['Jane Doe: A', 'John Dough: B', 'Jill Do: A'];
-  
+
   const results = makeStudentsReport(testData);
-  
+
   if (!(results && results instanceof Array)) {
     console.error('FAILURE: `makeStudentsReport` must return an array');
     return;
@@ -61,9 +61,9 @@ function testIt() {
   }
   console.log('SUCCESS: `makeStudentsReport` is working');
 }
-  
+
 //testIt();
-  
+
 const studentData = [
   {
     name: 'Tim',
@@ -81,7 +81,7 @@ const studentData = [
     course: 'Computer science',
   },
 ];
-  
+
 function enrollInSummerSchool(students) {
   // student is an array of objects
   //each object has (Name, status, course)
@@ -93,14 +93,14 @@ function enrollInSummerSchool(students) {
 }
 
 console.log(enrollInSummerSchool(studentData));
-  
+
 /* From here down, you are not expected to understand.... for now :)
     Nothing to see here!
-  
+
   */
-  
+
 // tests
-  
+
 function testIt() {
   var testData = [
     {
@@ -119,9 +119,9 @@ function testIt() {
       course: 'Computer science',
     },
   ];
-  
+
   var results = enrollInSummerSchool(testData);
-  
+
   if (!(results && results instanceof Array)) {
     console.error('FAILURE: `enrollSummerSchool` must return an array');
     return;
@@ -147,7 +147,7 @@ function testIt() {
     console.info('SUCCESS: `enrollSummerSchool` is working');
   }
 }
-  
+
 testIt();
 
 const scratchData = [
@@ -155,7 +155,7 @@ const scratchData = [
   { id: 28, foo: 'bizz' },
   { id: 19, foo: 'bazz' },
 ];
-  
+
 function findById(items, idNum) {
   //loop over array
   //condition if obj.id === idNum
@@ -173,9 +173,9 @@ function findById(items, idNum) {
 
 
 }
-  
+
 //
-  
+
 function testIt() {
   const testData = [
     { id: 1, foo: 'bar' },
@@ -201,9 +201,9 @@ function testIt() {
   }
   console.log('SUCCESS: `findByid` is working');
 }
-  
+
 //testIt();
-  
+
 // running the function with `objectA` and `expectedKeys`
 // should return `true`
 const objectA = {
@@ -212,7 +212,7 @@ const objectA = {
     age: 34,
     city: 'Chicago',
   };
-  
+
   // running the function with `objectB` and `expectedKeys`
   // should return `false`
   const objectB = {
@@ -220,22 +220,31 @@ const objectA = {
     age: 33,
     city: 'Peoria',
   };
-  
+
   const expectedKeys = ['id', 'name', 'age', 'city'];
-  
+
   function validateKeys(object, expectedKeys) {
-             
+             // return true if object has all the keys from expectedKeys
+             var size = Object.keys(object).length;
+
+             for (const key in object ) {
+               if (!expectedKeys.includes(key) || size != expectedKeys.length) {
+                 return false;
+               }
+             }
+
+             return true;
     }
-    
-  
-  /* From here down, you are not expected to 
-     understand.... for now :)  
-     
-     
+
+
+  /* From here down, you are not expected to
+     understand.... for now :)
+
+
      Nothing to see here!
-     
+
   */
-  
+
   function testIt() {
     const objectA = {
       id: 2,
@@ -243,13 +252,13 @@ const objectA = {
       age: 34,
       city: 'Chicago',
     };
-  
+
     const objectB = {
       id: 3,
       age: 33,
       city: 'Peoria',
     };
-  
+
     const objectC = {
       id: 9,
       name: 'Billy Bear',
@@ -257,21 +266,21 @@ const objectA = {
       city: 'Milwaukee',
       status: 'paused',
     };
-  
+
     const objectD = {
       foo: 2,
       bar: 'Jane Doe',
       bizz: 34,
       bang: 'Chicago',
     };
-  
+
     const expectedKeys = ['id', 'name', 'age', 'city'];
-  
+
     if (typeof validateKeys(objectA, expectedKeys) !== 'boolean') {
       console.error('FAILURE: validateKeys should return a boolean value');
       return;
     }
-  
+
     if (!validateKeys(objectA, expectedKeys)) {
       console.error(
         `FAILURE: running validateKeys with the following object and keys
@@ -281,7 +290,7 @@ const objectA = {
       );
       return;
     }
-  
+
     if (validateKeys(objectB, expectedKeys)) {
       console.error(
         `FAILURE: running validateKeys with the following object and keys
@@ -291,7 +300,7 @@ const objectA = {
       );
       return;
     }
-  
+
     if (validateKeys(objectC, expectedKeys)) {
       console.error(
         `FAILURE: running validateKeys with the following object and keys
@@ -301,7 +310,7 @@ const objectA = {
       );
       return;
     }
-  
+
     if (validateKeys(objectD, expectedKeys)) {
       console.error(
         `FAILURE: running validateKeys with the following object and keys
@@ -311,9 +320,8 @@ const objectA = {
       );
       return;
     }
-  
+
     console.log('SUCCESS: validateKeys is working');
   }
-  
+
   //testIt();
-  
