@@ -301,14 +301,14 @@ const objectA = {
       return;
     }
 
-    if (validateKeys(objectC, expectedKeys)) {
+  if (validateKeys(objectC, expectedKeys)) {
       console.error(
         `FAILURE: running validateKeys with the following object and keys
         should return false but returned true:
         Object: ${JSON.stringify(objectC)}
         Expected keys: ${expectedKeys}`
-      );
-      return;
+    );
+    return;
     }
 
     if (validateKeys(objectD, expectedKeys)) {
